@@ -1,0 +1,6 @@
+main {
+    background: rgb(188,184,255);
+    background: linear-gradient(225deg, rgba(188,184,255,1) 0%, rgba(255,182,182,1) 100%);
+    background-size: cover;
+    background-attachment: fixed;
+}

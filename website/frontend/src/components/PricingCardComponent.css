@@ -1,0 +1,91 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8ff;
+    width: 300px;
+    height: 350px;
+    border-radius: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 10px;
+}
+
+.pricing-header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100px;
+    background-color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: black;
+    padding: 5px 20px 5px 20px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.pricing-header-container .pricing-title {
+    font-weight: 800;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.pricing-header-container .description {
+    font-size: 13px;
+    word-break: break-all; 
+    white-space: normal; 
+    width: 100%;
+    color: grey;
+    font-weight: 400;
+    margin-top: 0;
+}
+
+.card-container .pricing-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.card-container .pricing-container p {
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.pricing-container a {
+    text-align: center;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid rgb(194, 193, 193);
+    color: black;
+    font-weight: 600;
+    border-radius: 7px;
+    width: 200px;
+    transition: 0.2s ease-in-out;
+}
+
+.pricing-container a:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.pricing-container .price {
+    display: flex;
+    flex-direction: row;
+}
+
+.pricing-container .price .promo {
+    text-decoration: line-through;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.pricing-container .including-container p.pricing-title {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.pricing-container .including-container p {
+    font-weight: 400;
+    font-size: 13px;
+}

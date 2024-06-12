@@ -1,0 +1,54 @@
+html, body {
+    height: 100%;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    line-height: 0px;
+    height: 90vh;
+    width: 100%;
+}
+
+form {
+    margin-bottom: 100px;
+}
+
+.auth-container .title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+p {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+}
+
+input {
+    outline: none;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+}
+
+.auth-container form .button {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+    border: 1px solid white;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 900;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 10px; 
+}
+
+.auth-container form .button:hover {
+    background-color: white; 
+    color: rgb(216, 158, 221);
+}

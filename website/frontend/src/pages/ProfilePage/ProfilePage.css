@@ -1,0 +1,65 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 15px;
+}
+
+.profile-container p.title {
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.profile-container .info-container, .profile-container .plan-container {
+    text-align: center;
+    color: white;
+    line-height: 5px;
+}
+
+.profile-container .info-container .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.profile-container .info-container .info .edit {
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.2s ease-in-out;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.profile-container .info-container .info .edit:hover {
+    background-color: white;
+    color: rgb(216, 158, 221);
+}
+
+a.upgrade-link {
+    color: gold;
+    margin-left: 4px;
+    margin-right: 4px;
+    transition: 0.2s ease-in-out;
+}
+
+a.upgrade-link:hover {
+    text-shadow: rgb(255, 230, 129) 1px 0 10px;
+}
+
+.plan {
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+.plan:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.plan-text {
+    font-size: 30px;
+    font-weight: 600;
+}

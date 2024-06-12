@@ -1,0 +1,93 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    padding: 25px;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.links-container {
+    display: flex;
+    align-items: center;
+}
+
+.title-container a {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.links-container a, .login-container a {
+    margin-left: 6px;
+    margin-right: 6px;
+    font-size: 17px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.login-container .link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 4px;
+    margin-right: 4px;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    transition: 0.2s ease-in-out;
+}
+
+.login-container .link:hover {
+    background-color: white;
+    color: rgb(216, 158, 221);
+}
+
+.login-container .link:hover a {
+    color: rgb(216, 158, 221);
+}
+
+.hidden-container .menu-icon {
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.hidden-menu {
+    position: absolute;
+    top: 60px; 
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden-menu.show {
+    display: flex;
+    padding: 10px;
+}
+
+.hidden-menu a, .hidden-menu .link {
+    padding: 10px 0;
+    color: black;
+    width: 100%;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.hidden-menu .link a {
+    background: none;
+}
