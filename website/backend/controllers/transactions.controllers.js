@@ -21,8 +21,8 @@ const CreateTransaction = async (req, res) => {
                 },
             ],
             mode: 'payment',
-            success_url: 'http://localhost:3000/success',
-            cancel_url: 'http://localhost:3000/cancel',
+            success_url: 'https://savemytime-production-client.vercel.app/success',
+            cancel_url: 'https://savemytime-production-client.vercel.app/cancel',
         });
 
         res.status(200).json({ id: session.id });

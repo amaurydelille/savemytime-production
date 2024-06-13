@@ -8,12 +8,25 @@ const { port } = require("./utils/config");
 
 const app = express();
 
-// CORS configuration
 const allowedOrigins = ['https://savemytime-production-client.vercel.app'];
-app.use(cors());
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(bodyParser.json());
 
-app.options('*', cors());
 app.use('/', userRouter);
 app.use('/', tokenRouter);
 app.use('/', transactionRouter);
@@ -22,7 +35,6 @@ app.get('/', (req, res) => {
     res.send('Server');
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
@@ -32,3 +44,5 @@ const PORT = process.env.PORT || port;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
+
+module.exports = app;
