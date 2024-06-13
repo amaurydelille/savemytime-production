@@ -14,6 +14,10 @@ app.use('/', userRouter);
 app.use('/', tokenRouter);
 app.use('/', transactionRouter)
 
+app.get('/', (req, res) => {
+    res.send('Server')
+});
+
 app.listen(port, () => {
     console.log('Server listening!');
 })
