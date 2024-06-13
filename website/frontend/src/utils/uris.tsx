@@ -1,5 +1,5 @@
-export const signUpEndpoint = 'http://localhost:3001/auth/signup';
-export const authEndpoint = 'http://localhost:3001/auth';
-export const getUserEndpoint = (id) => `http://localhost:3001/profile/${id}`;
-export const baseUrl = 'http://localhost:3001';
+export const signUpEndpoint = 'https://savemytime-production-client.vercel.app/auth/signup';
+export const authEndpoint = 'https://savemytime-production-client.vercel.app/auth';
+export const getUserEndpoint = (id) => `https://savemytime-production-client.vercel.app/profile/${id}`;
+export const baseUrl = 'https://savemytime-production-client.vercel.app/';
 export const stripeCheckoutSessionEndpoint = `${baseUrl}/create-checkout-session`;
