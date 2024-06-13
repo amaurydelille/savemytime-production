@@ -8,12 +8,12 @@ const { port } = require("./utils/config");
 
 const app = express();
 
-const corsOptions = {
-    origin: 'https://savemytime-production-client.vercel.app',
-    optionsSuccessStatus: 200 // For legacy browser support
-};
-
-app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+      next();
+    });
 app.use(bodyParser.json());
 
 app.use('/', userRouter);
