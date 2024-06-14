@@ -79,17 +79,23 @@ const HeaderComponent = () => {
             {showMenu &&
                 <div className="hidden-menu show">
                     {token ? (
-                        <div className='link'>
+                        <div className='link'
+                            onClick={() => navigate(`/profile/${id}`)}
+                        >
                             <p>Mon compte</p>
                             <UserOutlined />
                         </div>
                     ) : (
                     <>
-                        <div className="link">
+                        <div className="link"
+                            onClick={() => navigate('/auth/login')}
+                        >
                             <UserOutlined />    
                             <a>Sign In</a>
                         </div>
-                        <div className="link">
+                        <div className="link"
+                            onClick={() => navigate('/auth/signup')}
+                        >
                             <UserAddOutlined />
                             <a>Sign Up</a>
                         </div>

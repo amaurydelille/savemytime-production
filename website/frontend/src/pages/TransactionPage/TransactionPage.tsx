@@ -11,7 +11,7 @@ const TransactionPage = () => {
     const { plan } = useParams();
     const total = plan?.toString() === '1' ? 9.99 : 24.99;
     const { id } = useAuth();
-    const navigtate = useNavigate();
+    const navigate = useNavigate();
     const [session, setSession] = useState(null);
 
     useEffect(() => {
@@ -20,7 +20,8 @@ const TransactionPage = () => {
 
     const productsPrices = {
         1: 9.99,
-        2: 24.99
+        2: 24.99,
+        3: 79.99
     }
 
     const MakePayment = async (plan) => {
@@ -48,43 +49,67 @@ const TransactionPage = () => {
     };
 
     const displayOffer = (plan) => {
-        if (plan === '1') {
-            return (
-                <div className="offer-container">
-                    <p className='offer-title'>Classic</p>
-                    <p>• 50 searches</p>
-                    <p>• 3 keywords by search</p>
-                    <p>• Renewable</p>
-                    <div className="promotion">
-                        <p className='price'>9.99$</p>
-                        <p className='old-price'>14.99$</p>
+        switch (plan) {
+            case '1':
+                return (
+                    <div className="offer-container">
+                        <p className='offer-title'>Classic</p>
+                        <p>• 50 searches</p>
+                        <p>• 3 keywords by search</p>
+                        <p>• Renewable</p>
+                        <div className="promotion">
+                            <p className='price'>9.99$</p>
+                            <p className='old-price'>14.99$</p>
+                        </div>
                     </div>
-                </div>
-            );
-        } else {
-            return (
-                <div className="offer-container"
-                    style={{
-                        background: 'rgb(211,217,83)',
-                        background: 'linear-gradient(225deg, rgba(211,217,83,1) 0%, rgba(251,142,88,1) 100%)'
-                    }}
-                >
-                    <p className='offer-title'
+                );
+            case '2':
+                return (
+                    <div className="offer-container"
                         style={{
-                            fontFamily: 'Playfair Display, serif'
+                            background: 'rgb(211,217,83)',
+                            background: 'linear-gradient(225deg, rgba(211,217,83,1) 0%, rgba(251,142,88,1) 100%)'
                         }}
-                    >Premium</p>
-                    <p>• 150 searches</p>
-                    <p>• 10 keywords by search</p>
-                    <p>• Renewable</p>
-                    <div className="promotion">
-                        <p className='price'>24.99$</p>
-                        <p className='old-price'>29.99$</p>
+                    >
+                        <p className='offer-title'
+                            style={{
+                                fontFamily: 'Playfair Display, serif'
+                            }}
+                        >Expert</p>
+                        <p>• 150 searches</p>
+                        <p>• 10 keywords by search</p>
+                        <p>• Renewable</p>
+                        <div className="promotion">
+                            <p className='price'>24.99$</p>
+                            <p className='old-price'>29.99$</p>
+                        </div>
                     </div>
-                </div>
-            );
-        }
-    };
+                );
+                case '3':
+                    return (
+                        <div className="offer-container"
+                            style={{
+                                background: 'rgb(210,217,83)',
+                                background: 'linear-gradient(225deg, rgba(210,217,83,1) 0%, rgba(255,122,227,1) 100%)'
+                            }}
+                        >
+                            <p className='offer-title'
+                                style={{
+                                    fontFamily: 'Playfair Display, serif'
+                                }}
+                            >Premium</p>
+                            <p>• 300 searches</p>
+                            <p>• 30 keywords by search</p>
+                            <p>• Renewable</p>
+                            <p>• PDF files (soon)</p>
+                            <div className="promotion">
+                                <p className='price'>79.99$</p>
+                                <p className='old-price'>85.99$</p>
+                            </div>
+                        </div>
+                    );
+            }
+        };
 
     return (
         <div className="transaction-container">
