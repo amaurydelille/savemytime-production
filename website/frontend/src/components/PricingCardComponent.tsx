@@ -8,23 +8,32 @@ type PricingCardProps = {
 
 const offerInfo = [
     {
-        title: 'Basic',
+        title: 'Classic',
         description: 'For quick searches with few details',
         price: 9.99,
         includes: [
             '50 searches',
-            '3 keywords per search',
-            'Renewable'
+            '3 keywords per search'
+        ]
+    },
+    {
+        title: 'Expert',
+        tag: 'Most popular',
+        description: 'For deep and accurate searches with a lot of details',
+        price: 24.99,
+        includes: [
+            '150 searches',
+            '10 keywords per search'
         ]
     },
     {
         title: 'Premium',
         description: 'For deep and accurate searches with a lot of details',
-        price: 24.99,
+        price: 79.99,
         includes: [
-            '150 searches',
-            '10 keywords per search',
-            'Renewable'
+            '500 searches',
+            '30 keywords per search',
+            'PDF files (soon)'
         ]
     },
 ]

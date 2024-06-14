@@ -51,6 +51,9 @@ const HomePage = () => {
                     <Badge.Ribbon text='-5$' color='blue'>
                         <PricingCard offerIndex={2} />
                     </Badge.Ribbon>
+                    <Badge.Ribbon text='-5$' color='blue'>
+                        <PricingCard offerIndex={3} />
+                    </Badge.Ribbon>
                 </div>
             </div>
         </div>

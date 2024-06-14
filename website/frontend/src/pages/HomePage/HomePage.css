@@ -108,7 +108,7 @@
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    width: 60%;
+    width: 70%;
 }
 
 .pricing-container .offers-container {
@@ -117,61 +117,6 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 100%;
-}
-
-.pricing-container .offer-container {
-    background: rgb(58,184,255);
-    background: linear-gradient(225deg, rgba(58,184,255,1) 0%, rgba(238,99,242,1) 100%);
-    padding: 30px;
-    color: white;
-    border-radius: 10px;
-    transition: 0.1s ease-in-out;
-    line-height: 4px;
-}
-
-.pricing-container .offer-container:hover {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
-.pricing-container .offer-container p.offer-title {
-    font-size: 30px;
-    font-weight: 700;
-}
-
-.pricing-container .offer-container .promotion {
-    display: flex;
-    flex-direction: row;
-}
-
-.pricing-container .offer-container .promotion p.price{
-    font-size: 20px;
-    font-weight: 600;
-    margin-right: 5px;
-}
-
-.pricing-container .offer-container .promotion p.old-price{
-    color: whitesmoke;
-    text-decoration: line-through;
-}
-
-.pricing-container .offer-container .offer-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    background-color: white;
-    border: none;
-    color: black;
-    border-radius: 7px;
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    transition: 0.2s ease-in-out;
-    padding: 10px;
-}
-
-.pricing-container .offer-container .offer-button:hover {
-    color: goldenrod;
 }
 
 @media only screen and (max-width: 530px) {
