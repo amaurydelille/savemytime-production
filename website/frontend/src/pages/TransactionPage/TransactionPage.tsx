@@ -28,6 +28,7 @@ const TransactionPage = () => {
     const productsPrices = {
         1: 9.99,
         2: 24.99,
+        3: 79.99
     };
 
     const MakePayment = async (plan) => {
