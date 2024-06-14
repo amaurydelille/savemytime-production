@@ -39,14 +39,11 @@ const TransactionPage = () => {
                 user_id: id,
                 amount: productsPrices[plan],
             });
-
-            console.log(res);
             setSession(res.data);
-
+            setLoading(false);
             const result = await stripe.redirectToCheckout({
                 sessionId: res.data.id,
             });
-            setLoading(false);
 
             if (result.error) {
                 console.log(result.error.message);
