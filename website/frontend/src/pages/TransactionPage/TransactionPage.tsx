@@ -33,6 +33,7 @@ const TransactionPage = () => {
 
     const MakePayment = async () => {
         const planNumber = parseInt(plan!);
+        console.log(planNumber)
         setLoading(true);
         const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 

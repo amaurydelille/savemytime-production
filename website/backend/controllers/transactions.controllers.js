@@ -5,9 +5,9 @@ const CreateTransaction = async (req, res) => {
     try {
         const { user_id, amount } = req.body;
         const planDict  = {
-            50: 'Classic',
-            150: 'Expert',
-            300: 'Premium'
+            9.99: 'Classic',
+            24.99: 'Expert',
+            79.99: 'Premium'
         }
         const plan = planDict[amount];
         await Transaction.Create({ userId: user_id, amount: amount });
