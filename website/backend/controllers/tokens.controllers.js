@@ -1,9 +1,15 @@
 const Token = require('../services/token.services');
 
+const amountDict = {
+    0: 50,
+    1: 150,
+    2: 300
+}
+
 const CreateTokens = async (req, res) => {
     try {
         const { userId, plan } = req.body;
-        const amount = plan === 0 ? 50 : 150;
+        const amount = amountDict[plan];
         const result = await Token.Create({ userId, amount });
         if (result.success) {
             res.status(200).json(result.message);
@@ -32,7 +38,7 @@ const UseToken = async (req, res) => {
 const RechargeTokens = async (req, res) => {
     try {
         const { userId, plan } = req.body;
-        const amount = plan === 0 ? 50 : 150;
+        const amount = amountDict[plan];
         const result = await Token.Create({ userId, amount });
         if (result.success) {
             res.status(200).json(result.message);

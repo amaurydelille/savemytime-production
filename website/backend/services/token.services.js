@@ -2,11 +2,17 @@ const connectToDatabase = require('./db.services');
 const getFormattedDate = require('../utils/date');
 const { ObjectId } = require('mongodb');
 
+const planDict = {
+    50: 1,
+    150: 2,
+    300: 3
+}
+
 const Create = async ({ userId, amount }) => {
     try {
         const db = await connectToDatabase();
         const latest_recharge_date = getFormattedDate();
-        const plan = amount === 150 ? 2 : 1;
+        const plan = planDict[amount];
         await db.collection('tokens').insertOne({ userId, amount, plan, latest_recharge_date });
         return { success: true, message: 'Tokens created successfully.' }
     } catch(e) {
@@ -33,7 +39,7 @@ const Recharge = async ({ userId, tokensQuantity }) => {
     try {
         const db = await connectToDatabase();
         const latest_recharge_date = getFormattedDate();
-        const plan = tokensQuantity === 150 ? 2 : 1;
+        const plan = planDict[tokensQuantity];
         await db.collection('tokens').updateOne({ user_id: userId }, { amount: amount + tokensQuantity, plan: plan, latest_recharge_date: latest_recharge_date });
         return { success: true, message: 'Recharged your tokens successfully.' }
     } catch(e) {
