@@ -10,7 +10,7 @@ const Create = async (user) => {
         const db = await connectToDatabase();
         const hash = await hashPassword(user.password);
         const date = getFormattedDate();
-        const existingUser = await db.collection(USERS).findOne({ email: email });
+        const existingUser = await db.collection(USERS).findOne({ email: user.email });
         if (existingUser) {
             return { success: false, message: 'Account already registered.' }
         }
