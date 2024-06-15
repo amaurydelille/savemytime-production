@@ -17,6 +17,11 @@ const HeaderComponent = () => {
         setShowMenu(!showMenu);
     };
 
+    const handleNavigate = (route) => {
+        handleShowMenu();
+        navigate(route);
+    }
+
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 550) {
@@ -80,7 +85,7 @@ const HeaderComponent = () => {
                 <div className="hidden-menu show">
                     {token ? (
                         <div className='link'
-                            onClick={() => navigate(`/profile/${id}`)}
+                            onClick={() => handleNavigate(`/profile/${id}`)}
                         >
                             <p>Mon compte</p>
                             <UserOutlined />
@@ -88,13 +93,13 @@ const HeaderComponent = () => {
                     ) : (
                     <>
                         <div className="link"
-                            onClick={() => navigate('/auth/login')}
+                            onClick={() => handleNavigate('/auth/login')}
                         >
                             <UserOutlined />    
                             <a>Sign In</a>
                         </div>
                         <div className="link"
-                            onClick={() => navigate('/auth/signup')}
+                            onClick={() => handleNavigate('/auth/signup')}
                         >
                             <UserAddOutlined />
                             <a>Sign Up</a>

@@ -17,12 +17,14 @@ const TransactionPage = () => {
     const { plan } = useParams();
     const total = totalDict[plan!.toString()]
     const { id } = useAuth();
+    const { token } = useAuth();
     const navigate = useNavigate();
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        if (id === undefined) navigate('/auth');
+        console.log(id)
+        if (token === undefined || token === null || !token) navigate('/auth');
     }, [id, navigate]);
 
     const productsPrices = {
@@ -33,7 +35,6 @@ const TransactionPage = () => {
 
     const MakePayment = async () => {
         const planNumber = parseInt(plan!);
-        console.log(planNumber)
         setLoading(true);
         const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
