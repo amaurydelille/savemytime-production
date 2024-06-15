@@ -16,17 +16,23 @@ const TransactionPage = () => {
         '3': 79.99
     }
     const { plan } = useParams();
+    const [id, setId] = useState('');
+    const [token, setToken] = useState('');
     const total = totalDict[plan!.toString()]
-    const { id } = useAuth();
-    const { token } = useAuth();
     const navigate = useNavigate();
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(false);
 
+    const checkAuthentication = async () => {
+        const cookieToken = await Cookies.get('token');
+        const cookieId = await Cookies.get('id');
+        setToken(cookieToken);
+        setId(cookieId);
+        if (token === undefined) navigate('/auth/signup')
+    }
+
     useEffect(() => {
-        console.log(id)
-        console.log('cookie', Cookies.get('token'))
-        if (token === undefined || token === null || !token) navigate('/auth');
+        checkAuthentication();
     }, [id, navigate]);
 
     const productsPrices = {
