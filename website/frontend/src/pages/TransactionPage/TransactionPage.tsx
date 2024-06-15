@@ -7,6 +7,7 @@ import { stripeCheckoutSessionEndpoint } from '../../utils/uris.tsx';
 import './TransactionPage.css';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import Cookies from 'js-cookie';
 
 const TransactionPage = () => {
     const totalDict = {
@@ -24,6 +25,7 @@ const TransactionPage = () => {
 
     useEffect(() => {
         console.log(id)
+        console.log('cookie', Cookies.get('token'))
         if (token === undefined || token === null || !token) navigate('/auth');
     }, [id, navigate]);
 
