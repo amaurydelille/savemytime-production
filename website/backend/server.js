@@ -8,7 +8,7 @@ const { port } = require("./utils/config");
 
 const app = express();
 
-const allowedOrigins = ['https://savemytime-production-client.vercel.app'];
+const allowedOrigins = ['https://savemytime-production-client.vercel.app', 'http://localhost:5173'];
 
 const corsOptions = {
     origin: function (origin, callback) {
