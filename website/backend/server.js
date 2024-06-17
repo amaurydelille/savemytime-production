@@ -1,12 +1,12 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser'); // Remove this line
 const userRouter = require('./routes/user.routes');
 const tokenRouter = require('./routes/token.routes');
 const transactionRouter = require('./routes/transactions.routes');
 const cors = require('cors');
 const { port } = require("./utils/config");
 
-const app = express(); // Assurez-vous que cette ligne est présente
+const app = express();
 
 const allowedOrigins = [
     'https://savemytime-production-client.vercel.app', 
@@ -28,7 +28,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
-app.use(bodyParser.json());
+app.use(express.json()); // Use express.json() instead of bodyParser.json()
+app.use(express.urlencoded({ extended: true })); // Use express.urlencoded()
 
 app.use('/', userRouter);
 app.use('/', tokenRouter);
@@ -48,4 +49,4 @@ app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 
-module.exports = app; // Assurez-vous d'exporter app correctement
+module.exports = app; // Ensure app is exported correctly
