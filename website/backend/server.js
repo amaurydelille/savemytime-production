@@ -1,45 +1,36 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const userRouter = require('./routes/user.routes');
-const tokenRouter = require('./routes/token.routes');
-const transactionRouter = require('./routes/transactions.routes');
-const cors = require('cors');
-const { port } = require("./utils/config");
+app.use((req, res, next) => {
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    // Permettre les requêtes pré-vol OPTIONS de réussir
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
 
-const app = express();
+app.use(bodyParser.json()); // Analyse les requêtes JSON
 
-const allowedOrigins = ['https://savemytime-production-client.vercel.app', 'https://extension-savemytime-production.vercel.app'];
-
-const corsOptions = {
-    origin: function (origin, callback) {
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
-app.use(bodyParser.json());
-
+// Routes de l'application
 app.use('/', userRouter);
 app.use('/', tokenRouter);
 app.use('/', transactionRouter);
 
+// Route de base pour tester le serveur
 app.get('/', (req, res) => {
     res.send('Server');
 });
 
+// Middleware de gestion des erreurs
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
 
+// Démarrage du serveur
 const PORT = process.env.PORT || port;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
