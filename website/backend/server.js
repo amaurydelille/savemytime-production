@@ -1,5 +1,4 @@
 const express = require('express');
-// const bodyParser = require('body-parser'); // Remove this line
 const userRouter = require('./routes/user.routes');
 const tokenRouter = require('./routes/token.routes');
 const transactionRouter = require('./routes/transactions.routes');
@@ -28,8 +27,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
-app.use(express.json()); // Use express.json() instead of bodyParser.json()
-app.use(express.urlencoded({ extended: true })); // Use express.urlencoded()
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/', userRouter);
 app.use('/', tokenRouter);
@@ -49,4 +48,4 @@ app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 
-module.exports = app; // Ensure app is exported correctly
+module.exports = app; 

@@ -60,8 +60,20 @@ const Get = async (id) => {
     }
 }
 
+const UpdatePlan = async (user) => {
+    try {
+        const { id, plan } = user;
+        const db = await connectToDatabase();
+        await db.collection(USERS).updateOne({ _id: new ObjectId(id) }, { plan: plan });
+        return { success: true }
+    } catch(e) {
+        return { success: false }
+    }
+}
+
 module.exports = {
     Auth,
     Create,
-    Get
+    Get,
+    UpdatePlan
 }

@@ -2,6 +2,7 @@ const { ObjectId } = require('mongodb');
 const Transaction = require('../services/transaction.services');
 const Tokens = require('../services/token.services');
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
+const User = require('../services/user.services');
 
 const tokensDict = {
     999: 50,
@@ -41,7 +42,6 @@ const CreateTransaction = async (req, res) => {
                 amount: amount.toString(),
             },
         });
-        console.log(amount.toString())
         res.status(200).json({ id: session.id });
     } catch (e) {
         console.log(e);
@@ -80,8 +80,11 @@ const handlePaymentIntentSucceeded = async (paymentIntent) => {
     const userId = paymentIntent.metadata.user_id;
     const amount = parseInt(paymentIntent.metadata.amount);
     const tokensNumber = tokensDict[amount * 100];
-    
+    const plan = planDict[amount * 100];
+    const user = { id: userId, plan: plan };
+
     await Transaction.Create({ userId: new ObjectId(userId), amount: amount * 100 });
+    await User.UpdatePlan(user)
     await Tokens.Create({ userId: new ObjectId(userId), amount: tokensNumber });
 };
 
