@@ -6,9 +6,12 @@ const transactionRouter = require('./routes/transactions.routes');
 const cors = require('cors');
 const { port } = require("./utils/config");
 
-const app = express();
+const app = express(); // Assurez-vous que cette ligne est présente
 
-const allowedOrigins = ['https://savemytime-production-client.vercel.app', 'https://extension-savemytime-production.vercel.app'];
+const allowedOrigins = [
+    'https://savemytime-production-client.vercel.app', 
+    'https://extension-savemytime-production.vercel.app'
+];
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -45,4 +48,4 @@ app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 
-module.exports = app;
+module.exports = app; // Assurez-vous d'exporter app correctement
