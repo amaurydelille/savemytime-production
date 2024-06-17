@@ -60,7 +60,7 @@ const GetTokens = async (req, res) => {
             res.status(400).json(result.message);
         }
     } catch(e) {
-        res.status(500).jdon(e);
+        res.status(500).json(e);
     }
 }
 

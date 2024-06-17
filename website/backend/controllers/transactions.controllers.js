@@ -18,8 +18,7 @@ const planDict = {
 const CreateTransaction = async (req, res) => {
     try {
         const { user_id, amount } = req.body;
-        const plan = planDict[amount * 100]; 
-        await Transaction.Create({ userId: new ObjectId(user_id), amount: amount });
+        const plan = planDict[amount * 100];
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: [
@@ -37,8 +36,12 @@ const CreateTransaction = async (req, res) => {
             mode: 'payment',
             success_url: 'https://savemytime-production-client.vercel.app/success',
             cancel_url: 'https://savemytime-production-client.vercel.app/cancel',
+            metadata: {
+                user_id: user_id.toString(),
+                amount: amount.toString(),
+            },
         });
-
+        console.log(amount.toString())
         res.status(200).json({ id: session.id });
     } catch (e) {
         console.log(e);
@@ -74,10 +77,14 @@ const HandleTransactionEvent = (req, res) => {
 };
 
 const handlePaymentIntentSucceeded = async (paymentIntent) => {
-    const tokensNumber = tokensDict[paymentIntent.amount_received];
-    await Transaction.Create({ userId: new ObjectId(paymentIntent.metadata.user_id), amount: paymentIntent.amount_received });
-    await Tokens.Create({ userId: new ObjectId(paymentIntent.metadata.user_id), amount: tokensNumber });
+    const userId = paymentIntent.metadata.user_id;
+    const amount = parseInt(paymentIntent.metadata.amount);
+    const tokensNumber = tokensDict[amount * 100];
+    
+    await Transaction.Create({ userId: new ObjectId(userId), amount: amount * 100 });
+    await Tokens.Create({ userId: new ObjectId(userId), amount: tokensNumber });
 };
+
 
 const handlePaymentIntentFailed = (paymentIntent) => {
     // Handle payment failure

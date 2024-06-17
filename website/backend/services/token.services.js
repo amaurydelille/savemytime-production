@@ -53,7 +53,8 @@ const Get = async ({ userId }) => {
         const tokenPlan = await db.collection('tokens').findOne({ user_id: new ObjectId(userId) });
         return { success: true, tokenPlan: tokenPlan }
     } catch(e) {
-        return { success: false, message: 'Could net get user plan.' }
+        console.log(e)
+        return { success: false, message: `Could net get user plan: ${e}` }
     }
 }
 
