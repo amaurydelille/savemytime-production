@@ -33,7 +33,9 @@ input {
     font-family: "DM Sans", sans-serif;
     font-weight: 500;
     border-radius: 7px;
+    padding: 5px 10px;
     width: 200px;
+    border: 1px solid grey;
 }
 
 .auth-container form .button {
@@ -42,11 +44,12 @@ input {
     margin-top: 20px;
     cursor: pointer;
     border: 1px solid white;
+    background-color: white;
     padding: 5px 10px;
     font-size: 16px;
     font-family: "DM Sans", sans-serif;
     font-weight: 900;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: 0.2s ease-in-out;
     border-radius: 7px; 
     width: 200px;
 }
