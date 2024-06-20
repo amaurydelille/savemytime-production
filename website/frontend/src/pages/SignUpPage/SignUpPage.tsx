@@ -75,7 +75,7 @@ const SignUpPage = () => {
                 <form>
                     <div className="field">
                     <p className="title">Welcome <SmileOutlined size={20}/></p>
-                        <p>Enter your email</p>
+                        <p>Email</p>
                         <input 
                             value={email}
                             type="email"
@@ -84,7 +84,7 @@ const SignUpPage = () => {
                         />
                     </div>
                     <div className="field">
-                        <p>Enter a password</p>
+                        <p>Password</p>
                         <input
                         type="password"
                             value={password}
@@ -95,7 +95,11 @@ const SignUpPage = () => {
                     <div className="button"
                         onClick={handleSubmit}
                     >
-                        <p>Sign Up</p>
+                        <p style={{
+                            color: 'rgb(216, 158, 221)'
+                        }}>
+                            Sign Up
+                        </p>
                     </div>
                 </form>
             </div>

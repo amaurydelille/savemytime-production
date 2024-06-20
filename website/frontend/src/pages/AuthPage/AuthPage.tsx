@@ -68,7 +68,11 @@ const AuthPage = () => {
                     <div className="button"
                         onClick={handleSubmit}
                     >
-                        <p>Sign In</p>
+                        <p style={{
+                            color: 'rgb(216, 158, 221)'
+                        }}>
+                            Sign In
+                        </p>
                     </div>
                 </form>
             </div>
