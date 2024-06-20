@@ -50,7 +50,7 @@ const AuthPage = () => {
                 <form>
                     <p className="title">Welcome again <SmileOutlined size={20}/></p>
                     <div className="field">
-                        <p>Enter your email</p>
+                        <p>Email</p>
                         <input 
                             value={email}
                             type="email"
@@ -58,7 +58,7 @@ const AuthPage = () => {
                         />
                     </div>
                     <div className="field">
-                        <p>Enter a password</p>
+                        <p>Password</p>
                         <input
                             value={password}
                             type="password"
