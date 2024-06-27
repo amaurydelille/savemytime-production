@@ -19,7 +19,7 @@ const planDict = {
 const CreateTransaction = async (req, res) => {
     try {
         const { user_id, amount } = req.body;
-        const plan = planDict[amount * 100];
+        const plan = planDict[Math.round(amount * 100)];
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: [
