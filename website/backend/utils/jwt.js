@@ -1,15 +1,9 @@
 const jwt = require('jsonwebtoken');
-const { generateKeyPairSync } = require('crypto');
-
-const { privateKey, publicKey } = generateKeyPairSync('rsa', {
-    modulusLength: 2048,
-});
 
 const createJSONWebToken = async (userEmail) => {
     const token = await jwt.sign(
         { email: userEmail },
-        privateKey,
-        { algorithm: 'RS256', expiresIn: '24h' }
+        process.env.PRIVATE_KEY_JWT
     );
     return token;
 }

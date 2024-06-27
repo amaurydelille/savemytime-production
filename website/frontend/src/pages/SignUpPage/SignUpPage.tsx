@@ -97,7 +97,9 @@ const SignUpPage = () => {
                     >
                         <p style={{
                             color: 'rgb(216, 158, 221)'
-                        }}>
+                        }}
+                            className="button-text"
+                        >
                             Sign Up
                         </p>
                     </div>
