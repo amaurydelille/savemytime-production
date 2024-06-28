@@ -47,6 +47,7 @@ const TransactionPage = () => {
         const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
         try {
+            console.log(id, productsPrices[planNumber])
             const res = await axios.post(stripeCheckoutSessionEndpoint, {
                 user_id: id,
                 amount: productsPrices[planNumber],
