@@ -25,11 +25,11 @@ const CreateTransaction = async (req, res) => {
             line_items: [
                 {
                     price_data: {
-                        currency: 'jpy',
+                        currency: 'usd',
                         product_data: {
                             name: plan,
                         },
-                        unit_amount: 1,//Math.round(amount * 100),
+                        unit_amount: 50,//Math.round(amount * 100),
                     },
                     quantity: 1,
                 },
