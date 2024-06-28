@@ -78,6 +78,7 @@ const HandleTransactionEvent = (req, res) => {
 };
 
 const handlePaymentIntentSucceeded = async (paymentIntent) => {
+    console.log(paymentIntent)
     const userId = paymentIntent.metadata.user_id;
     const amount = parseInt(paymentIntent.metadata.amount);
     const tokensNumber = tokensDict[amount * 100];
