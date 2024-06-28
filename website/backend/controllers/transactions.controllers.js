@@ -44,10 +44,6 @@ const CreateTransaction = async (req, res) => {
             success_url: 'https://savemytime-production-client.vercel.app/success',
             cancel_url: 'https://savemytime-production-client.vercel.app/cancel',
         });
-        session.payment_intent_data.metadata = { 
-            user_id: user_id.toString(),
-            amount: amount.toString()
-        }
         res.status(200).json({ id: session.id });
     } catch (e) {
         console.log(e);
