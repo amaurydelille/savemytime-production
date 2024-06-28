@@ -14,6 +14,9 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'] 
   }));
 
+
+app.use('/stripe-event-listening', express.raw({ type: 'application/json' }));
+
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 
