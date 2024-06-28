@@ -19,10 +19,12 @@ const planDict = {
 const CreateTransaction = async (req, res) => {
     try {
         const { user_id, amount } = req.body;
-        console.log(user_id.toString(), amount.toString())
         const plan = planDict[Math.round(amount * 100)];
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
+            metadata: {
+                'test': 'test'
+            },
             line_items: [
                 {
                     price_data: {
@@ -38,16 +40,11 @@ const CreateTransaction = async (req, res) => {
             mode: 'payment',
             success_url: 'https://savemytime-production-client.vercel.app/success',
             cancel_url: 'https://savemytime-production-client.vercel.app/cancel',
-            metadata: {
-                user_id: user_id.toString(),
-                amount: amount.toString(),
-            },
         });
         session.metadata = { 
             user_id: user_id.toString(),
             amount: amount.toString()
         }
-        console.log(session.metadata)
         res.status(200).json({ id: session.id });
     } catch (e) {
         console.log(e);
