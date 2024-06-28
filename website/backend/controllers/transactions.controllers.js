@@ -5,15 +5,15 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const User = require('../services/user.services');
 
 const tokensDict = {
-    999: 50,
-    2499: 150,
-    7999: 300
+    9: 50,
+    24: 150,
+    79: 300
 };
 
 const planDict = {
-    999: 'Classic',
-    2499: 'Expert',
-    7999: 'Premium'
+    9: 'Classic',
+    24: 'Expert',
+    79: 'Premium'
 };
 
 const CreateTransaction = async (req, res) => {
@@ -82,8 +82,8 @@ const handlePaymentIntentSucceeded = async (paymentIntent) => {
     console.log(paymentIntent)
     const userId = paymentIntent.metadata.user_id;
     const amount = parseInt(paymentIntent.metadata.amount);
-    const tokensNumber = tokensDict[amount * 100];
-    const plan = planDict[amount * 100];
+    const tokensNumber = tokensDict[amount];
+    const plan = planDict[amount];
     const user = { id: userId, plan: plan };
     console.log(userId, amount, tokensNumber, plan, user)
 
