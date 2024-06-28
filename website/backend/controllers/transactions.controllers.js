@@ -82,6 +82,7 @@ const handlePaymentIntentSucceeded = async (paymentIntent) => {
     const tokensNumber = tokensDict[amount * 100];
     const plan = planDict[amount * 100];
     const user = { id: userId, plan: plan };
+    console.log(userId, amount, tokensNumber, plan, user)
 
     await Transaction.Create({ userId: new ObjectId(userId), amount: amount * 100 });
     await User.UpdatePlan(user)
