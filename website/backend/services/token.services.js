@@ -10,10 +10,11 @@ const planDict = {
 
 const Create = async ({ userId, amount }) => {
     try {
+        console.log(userId, amount)
         const db = await connectToDatabase();
         const latest_recharge_date = getFormattedDate();
         const plan = planDict[amount];
-        await db.collection('tokens').insertOne({ userId, amount, plan, latest_recharge_date });
+        await db.collection('tokens').insertOne({ user_id: new ObjectId(userId), amount, plan, latest_recharge_date });
         return { success: true, message: 'Tokens created successfully.' }
     } catch(e) {
         return { success: false, message: 'Tokens could not be created successfully.' }

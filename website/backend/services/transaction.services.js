@@ -5,10 +5,11 @@ const { ObjectId } = require('mongodb');
 
 const Create = async ({ userId, amount }) => {
     try {
+        console.log(userId, amount)
         const db = await connectToDatabase();
         const date = getFormattedDate();
         await db.collection(TRANSACTIONS).insertOne({
-            user_id: userId,
+            user_id: new ObjectId(userId),
             amount: amount,
             creation_date: date
         });

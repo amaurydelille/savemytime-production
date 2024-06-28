@@ -63,8 +63,10 @@ const Get = async (id) => {
 const UpdatePlan = async (user) => {
     try {
         const { id, plan } = user;
+        console.log(user)
         const db = await connectToDatabase();
-        await db.collection(USERS).updateOne({ _id: new ObjectId(id) }, { plan: plan });
+        const result = await db.collection(USERS).updateOne({ _id: new ObjectId(id) }, { plan: plan });
+        console.log(result)
         return { success: true }
     } catch(e) {
         return { success: false }
