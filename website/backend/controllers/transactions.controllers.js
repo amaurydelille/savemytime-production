@@ -25,7 +25,7 @@ const CreateTransaction = async (req, res) => {
             line_items: [
                 {
                     price_data: {
-                        currency: 'usd',
+                        currency: 'jpy',
                         product_data: {
                             name: plan,
                         },
