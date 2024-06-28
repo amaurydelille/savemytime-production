@@ -43,7 +43,10 @@ const CreateTransaction = async (req, res) => {
                 amount: amount.toString(),
             },
         });
-        session.metadata = { 'test': 'test' }
+        session.metadata = { 
+            user_id: user_id.toString(),
+            amount: amount.toString()
+        }
         console.log(session.metadata)
         res.status(200).json({ id: session.id });
     } catch (e) {
