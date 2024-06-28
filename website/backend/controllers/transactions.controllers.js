@@ -7,13 +7,19 @@ const User = require('../services/user.services');
 const tokensDict = {
     9: 50,
     24: 150,
-    79: 300
+    79: 300,
+    999: 50,
+    2499: 150,
+    7999: 300,
 };
 
 const planDict = {
     9: 'Classic',
     24: 'Expert',
-    79: 'Premium'
+    79: 'Premium',
+    999: 'Classic',
+    2499: 'Expert',
+    7999: 'Premium'
 };
 
 const CreateTransaction = async (req, res) => {
