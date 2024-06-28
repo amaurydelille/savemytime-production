@@ -14,6 +14,9 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'] 
   }));
 
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
+
 app.use('/', userRouter);
 app.use('/', tokenRouter);
 app.use('/', transactionRouter);
@@ -29,9 +32,6 @@ app.use('/auth/signup', limiter);
 app.get('/', (req, res) => {
     res.send('Server');
 });
-
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true }));
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
