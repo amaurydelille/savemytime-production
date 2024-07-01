@@ -11,7 +11,7 @@ const tokensDict = {
     999: 50,
     2499: 150,
     7999: 300,
-};
+}
 
 const planDict = {
     9: 'Classic',
@@ -20,7 +20,7 @@ const planDict = {
     999: 'Classic',
     2499: 'Expert',
     7999: 'Premium'
-};
+}
 
 const CreateTransaction = async (req, res) => {
     try {
@@ -55,7 +55,7 @@ const CreateTransaction = async (req, res) => {
         console.log(e);
         res.status(500).json(e);
     }
-};
+}
 
 const HandleTransactionEvent = (req, res) => {
     const sig = req.headers['stripe-signature'];
@@ -82,7 +82,7 @@ const HandleTransactionEvent = (req, res) => {
     }
 
     res.json({ received: true });
-};
+}
 
 const handlePaymentIntentSucceeded = async (paymentIntent) => {
     const userId = paymentIntent.metadata.user_id;
@@ -94,15 +94,15 @@ const handlePaymentIntentSucceeded = async (paymentIntent) => {
     const resultTransactions = await Transaction.Create({ userId: userId, amount: amount * 100 });
     const resultUpdate = await User.UpdatePlan(user)
     const resultTokens = await Tokens.Create({ userId: userId, amount: tokensNumber });
-    console.log(resultTransactions, resultUpdate, resultTokens)
-};
+    console.log(resultTransactions, resultUpdate, resultTokens);
+}
 
 
 const handlePaymentIntentFailed = (paymentIntent) => {
     // Handle payment failure
-};
+}
 
 module.exports = {
     CreateTransaction,
     HandleTransactionEvent
-};
+}
