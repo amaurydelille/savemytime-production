@@ -64,7 +64,7 @@ const UpdatePlan = async (user) => {
     try {
         const { id, plan } = user;
         const db = await connectToDatabase();
-        const result = await db.collection('USERS').updateOne(
+        const result = await db.collection(USERS).updateOne(
             { _id: new ObjectId(id) },
             { $set: { plan: plan } } 
         );
