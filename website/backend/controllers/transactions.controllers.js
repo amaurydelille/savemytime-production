@@ -94,6 +94,7 @@ const handlePaymentIntentSucceeded = async (paymentIntent) => {
     const resultTransactions = await Transaction.Create({ userId: userId, amount: amount * 100 });
     const resultUpdate = await User.UpdatePlan(user)
     const resultTokens = await Tokens.Create({ userId: userId, amount: tokensNumber });
+    console.log(resultTransactions, resultUpdate, resultTokens)
 };
 
 
