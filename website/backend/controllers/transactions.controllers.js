@@ -85,18 +85,15 @@ const HandleTransactionEvent = (req, res) => {
 };
 
 const handlePaymentIntentSucceeded = async (paymentIntent) => {
-    console.log(paymentIntent)
     const userId = paymentIntent.metadata.user_id;
     const amount = parseInt(paymentIntent.metadata.amount);
     const tokensNumber = tokensDict[amount];
     const plan = planDict[amount];
     const user = { id: userId, plan: plan };
-    console.log(userId, amount, tokensNumber, plan, user)
 
-    const rt = await Transaction.Create({ userId: userId, amount: amount * 100 });
-    const ru = await User.UpdatePlan(user)
-    const rtokens = await Tokens.Create({ userId: userId, amount: tokensNumber });
-    console.log(rt, ru, rtokens)
+    const resultTransactions = await Transaction.Create({ userId: userId, amount: amount * 100 });
+    const resultUpdate = await User.UpdatePlan(user)
+    const resultTokens = await Tokens.Create({ userId: userId, amount: tokensNumber });
 };
 
 

@@ -63,15 +63,22 @@ const Get = async (id) => {
 const UpdatePlan = async (user) => {
     try {
         const { id, plan } = user;
-        console.log(user)
         const db = await connectToDatabase();
-        const result = await db.collection(USERS).updateOne({ _id: new ObjectId(id) }, { plan: plan });
-        console.log(result)
-        return { success: true }
+        const result = await db.collection('USERS').updateOne(
+            { _id: new ObjectId(id) },
+            { $set: { plan: plan } } 
+        );
+        console.log(result);
+        if (result.modifiedCount === 1) {
+            return { success: true };
+        } else {
+            return { success: false, message: "No document matched the query. Updated 0 documents." };
+        }
     } catch(e) {
-        return { success: false }
+        console.error(e); 
+        return { success: false, message: e.message };
     }
-}
+};
 
 module.exports = {
     Auth,
