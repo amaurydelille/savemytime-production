@@ -29,7 +29,7 @@ const ProfilePage = () => {
 
     const displayPlan = (plan) => {
         switch(plan) {
-            case 0:
+            case 'Unpaid':
                 return (
                     <p 
                         style={{ color: "gray" }}
@@ -49,7 +49,7 @@ const ProfilePage = () => {
                         <p>3 keywords per search</p>
                     </div>
                 )
-            case 2:
+            case 'Classic':
                 return (
                     <div className="plan"
                         style={{

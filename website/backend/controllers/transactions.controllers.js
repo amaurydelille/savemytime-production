@@ -41,7 +41,7 @@ const CreateTransaction = async (req, res) => {
                         product_data: {
                             name: plan,
                         },
-                        unit_amount: 55,//Math.round(amount * 100),
+                        unit_amount: Math.round(amount * 100),
                     },
                     quantity: 1,
                 },

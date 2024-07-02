@@ -14,7 +14,7 @@ const Create = async (user) => {
         if (existingUser) {
             return { success: false, message: 'Account already registered.' }
         }
-        const newUser = { email: user.email, password: hash, plan: 0, creation_date: date };
+        const newUser = { email: user.email, password: hash, plan: 'Unpaid', creation_date: date };
         const result = await db.collection('users').insertOne(newUser);
         const userId = result.insertedId;
         return { success: true, message: 'Account created successfully.', id: userId };
