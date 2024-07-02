@@ -4,9 +4,12 @@ import './HomePage.css';
 import { DownCircleOutlined, RocketTwoTone } from '@ant-design/icons';
 import { Badge } from 'antd';
 import PricingCard from '../../components/PricingCardComponent.tsx';
+import Cookies from 'js-cookie'
 
 const HomePage = () => {
     const navigate = useNavigate();
+    console.log(Cookies.get('token'))
+    console.log(Cookies.get('id'))
 
     const scrollToGifContainer = () => {
         const gifContainer = document.getElementById('gif-container');
