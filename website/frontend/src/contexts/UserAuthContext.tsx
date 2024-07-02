@@ -20,12 +20,12 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const saveToken = (newToken) => {
-        Cookies.set('token', newToken, { path: '/', secure: true, sameSite: 'strict' });
+        Cookies.set('token', newToken, { domain: process.env.REACT_APP_DOMAIN_COOKIES });
         setToken(newToken);
     };
 
     const saveId = (id) => {
-        Cookies.set('id', id);
+        Cookies.set('id', id, { domain: process.env.REACT_APP_DOMAIN_COOKIES });
         setId(id);
     }
 
