@@ -13,7 +13,6 @@ const offerInfo = [
         price: 9.99,
         includes: [
             '50 searches',
-            '3 keywords per search'
         ]
     },
     {
@@ -23,7 +22,6 @@ const offerInfo = [
         price: 24.99,
         includes: [
             '150 searches',
-            '10 keywords per search'
         ]
     },
     {
@@ -32,7 +30,6 @@ const offerInfo = [
         price: 79.99,
         includes: [
             '500 searches',
-            '30 keywords per search',
             'PDF files (soon)'
         ]
     },

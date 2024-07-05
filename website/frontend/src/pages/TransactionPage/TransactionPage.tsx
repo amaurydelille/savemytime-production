@@ -67,7 +67,7 @@ const TransactionPage = () => {
 
     const displayOffer = (plan) => {
         switch (plan) {
-            case '1':
+            case 'Classic':
                 return (
                     <div className="offer-container">
                         <p className='offer-title'>Classic</p>
@@ -80,7 +80,7 @@ const TransactionPage = () => {
                         </div>
                     </div>
                 );
-            case '2':
+            case 'Expert':
                 return (
                     <div className="offer-container"
                         style={{
@@ -101,7 +101,7 @@ const TransactionPage = () => {
                         </div>
                     </div>
                 );
-            case '3':
+            case 'Premium':
                 return (
                     <div className="offer-container"
                         style={{
