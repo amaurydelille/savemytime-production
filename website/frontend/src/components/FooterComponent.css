@@ -2,9 +2,11 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 10vh;
+    align-items: center;
+    height: 15vh;
     color: white;
     margin-top: 50px;
+    padding: 10px;
 }
 
 .footer-container p.footer-title {
