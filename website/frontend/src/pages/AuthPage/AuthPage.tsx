@@ -6,6 +6,7 @@ import { authEndpoint } from "../../utils/uris.tsx";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/UserAuthContext.tsx";
+import Cookies from "js-cookie";
 
 const AuthPage = () => {
 
@@ -28,6 +29,8 @@ const AuthPage = () => {
                 message.success(res.data.message);
                 const token = res.data.token;
                 const id = res.data.id;
+                Cookies.set('token', token)
+                Cookies.set('id', id);
                 await setToken(token);
                 await setId(id);
                 setRedirect(true);
