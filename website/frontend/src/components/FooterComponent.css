@@ -1,7 +1,17 @@
 .footer-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     height: 10vh;
     color: white;
     margin-top: 50px;
+}
+
+.footer-container p.footer-title {
+    font-weight: 800;
+}
+
+.footer-container a {
+    text-decoration: none;
+    color: white;
 }
