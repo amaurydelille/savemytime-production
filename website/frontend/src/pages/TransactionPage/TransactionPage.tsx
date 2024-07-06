@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
-import { useAuth } from '../../contexts/UserAuthContext.tsx';
 import axios from 'axios';
 import { stripeCheckoutSessionEndpoint } from '../../utils/uris.tsx';
 import './TransactionPage.css';
@@ -16,8 +15,8 @@ const TransactionPage = () => {
         '3': 79.99
     }
     const { plan } = useParams();
-    const [id, setId] = useState('');
-    const [token, setToken] = useState('');
+    const [id, setId] = useState<string | undefined>('');
+    const [token, setToken] = useState<string | undefined>('');
     const total = totalDict[plan!.toString()]
     const navigate = useNavigate();
     const [session, setSession] = useState(null);
