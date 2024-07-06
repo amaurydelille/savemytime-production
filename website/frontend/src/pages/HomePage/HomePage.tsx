@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './HomePage.css';
 import { DownCircleOutlined, RocketTwoTone } from '@ant-design/icons';
-import { Badge } from 'antd';
+import { Badge, notification } from 'antd';
 import PricingCard from '../../components/PricingCardComponent.tsx';
+import type { NotificationArgsProps } from 'antd';
 
 const HomePage = () => {
 
@@ -12,6 +13,22 @@ const HomePage = () => {
             gifContainer.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
+    type NotificationPlacement = NotificationArgsProps['placement'];
+    const [api, contextHolder] = notification.useNotification();
+    const Context = React.createContext({ name: 'Default' });
+
+    const openNotification = (placement: NotificationPlacement) => {
+        api.info({
+          message: `Notification ${placement}`,
+          description: <Context.Consumer>{({ name }) => `Hello, ${name}!`}</Context.Consumer>,
+          placement,
+        });
+    };
+
+    useEffect(() => {
+        openNotification('bottomRight');
+    })
 
     return (
         <div className='main-container'>
