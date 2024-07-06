@@ -15,16 +15,16 @@ const TransactionPage = () => {
         '3': 79.99
     }
     const { plan } = useParams();
-    const [id, setId] = useState<string | undefined>('');
-    const [token, setToken] = useState<string | undefined>('');
+    const [id, setId] = useState('');
+    const [token, setToken] = useState('');
     const total = totalDict[plan!.toString()]
     const navigate = useNavigate();
-    const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const checkAuthentication = async () => {
         const cookieToken = await Cookies.get('token');
         const cookieId = await Cookies.get('id');
+        console.warn(cookieId, cookieToken)
         setToken(cookieToken);
         setId(cookieId);
         if (token === undefined) navigate('/auth/signup')
@@ -50,7 +50,6 @@ const TransactionPage = () => {
                 user_id: id,
                 amount: productsPrices[planNumber],
             });
-            setSession(res.data);
             setLoading(false);
             const result = await stripe.redirectToCheckout({
                 sessionId: res.data.id,
