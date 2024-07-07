@@ -19,9 +19,13 @@ const HomePage = () => {
     const [api, contextHolder] = notification.useNotification();
 
     const openNotification = (placement: NotificationPlacement) => {
-        api.info({
-            message: `Notification ${placement}`,
-            description: <NotificationContext.Consumer>{({ name }) => `Hello, ${name}!`}</NotificationContext.Consumer>,
+        api.open({
+            message: 'Welcome to SaveMyTime',
+            description: 
+                <NotificationContext.Consumer>
+                    {() => 'Upvote us on ProductHunt !'}
+                </NotificationContext.Consumer>,
+            duration: 0,
             placement,
         });
     };
