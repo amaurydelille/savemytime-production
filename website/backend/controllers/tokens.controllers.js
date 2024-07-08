@@ -24,8 +24,8 @@ const CreateTokens = async (req, res) => {
 
 const UseToken = async (req, res) => {
     try {
-        const userId = req.body.user_id;
-        console.log(userId)
+        const userId = req.body;
+        console.log(req.body)
         const result = await Token.Use({ userId: userId });
         console.log(result)
         if (result.success) {
