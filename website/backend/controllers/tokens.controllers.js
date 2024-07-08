@@ -1,4 +1,5 @@
 const Token = require('../services/token.services');
+const { ObjectId } = require('mongodb'):
 
 const amountDict = {
     0: 50,
@@ -23,8 +24,8 @@ const CreateTokens = async (req, res) => {
 
 const UseToken = async (req, res) => {
     try {
-        const userId = req.body;
-        const result = await Token.Use({ userId });
+        const userId = req.body.userId;
+        const result = await Token.Use({ user_id: new ObjectId(userId) });
         if (result.success) {
             res.status(200).json(result.message);
         } else {
