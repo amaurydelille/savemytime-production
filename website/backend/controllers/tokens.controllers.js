@@ -26,6 +26,7 @@ const UseToken = async (req, res) => {
     try {
         const userId = req.body.user_id;
         const result = await Token.Use({ user_id: new ObjectId(userId) });
+        console.log(result)
         if (result.success) {
             res.status(200).json(result.message);
         } else {
