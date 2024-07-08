@@ -26,11 +26,10 @@ const Use = async ({ userId }) => {
         const db = await connectToDatabase();
         const tokensObject = await db.collection('tokens').findOne({ user_id: new ObjectId(userId) });
         console.log(tokensObject)
-        return tokensObject
         if (tokensObject.amount === 0) {
             return { success: false, message: 'You don\'t have enough tokens, please renew your plan. ' }
         } else {
-            await db.collection('tokens').updateOne({ userId: userId }, { amount: amount - 1 });
+            await db.collection('tokens').updateOne({ user_id: new ObjectId(userId) }, { amount: amount - 1 });
             return { success: true }
         }
     } catch(e) {
