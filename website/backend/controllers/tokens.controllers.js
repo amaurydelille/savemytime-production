@@ -1,5 +1,5 @@
 const Token = require('../services/token.services');
-const { ObjectId } = require('mongodb'):
+const { ObjectId } = require('mongodb');
 
 const amountDict = {
     0: 50,
