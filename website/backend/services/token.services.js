@@ -24,7 +24,7 @@ const Create = async ({ userId, amount }) => {
 const Use = async ({ userId }) => {
     try {
         const db = await connectToDatabase();
-        const tokensObject = await db.collection('tokens').findOne({ userId: userId });
+        const tokensObject = await db.collection('tokens').findOne({ user_id: userId });
         if (tokensObject.amount === 0) {
             return { success: false, message: 'You don\'t have enough tokens, please renew your plan. ' }
         } else {
