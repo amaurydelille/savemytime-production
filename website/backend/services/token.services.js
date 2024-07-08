@@ -25,17 +25,27 @@ const Use = async ({ userId }) => {
     try {
         const db = await connectToDatabase();
         const tokensObject = await db.collection('tokens').findOne({ user_id: new ObjectId(userId) });
-        console.log(tokensObject)
-        if (tokensObject.amount === 0) {
-            return { success: false, message: 'You don\'t have enough tokens, please renew your plan. ' }
-        } else {
-            await db.collection('tokens').updateOne({ user_id: new ObjectId(userId) }, { amount: amount - 1 });
-            return { success: true }
+
+        if (!tokensObject) {
+            return { success: false, message: 'User not found.' };
         }
-    } catch(e) {
-        return { success: false, message: e }
+
+        console.log(tokensObject);
+        
+        if (tokensObject.amount === 0) {
+            return { success: false, message: 'You don\'t have enough tokens, please renew your plan.' };
+        } else {
+            await db.collection('tokens').updateOne(
+                { user_id: new ObjectId(userId) },
+                { $set: { amount: tokensObject.amount - 1 } }
+            );
+            return { success: true };
+        }
+    } catch (e) {
+        return { success: false, message: e.message };
     }
-}
+};
+
 
 const Recharge = async ({ userId, tokensQuantity }) => {
     try {
