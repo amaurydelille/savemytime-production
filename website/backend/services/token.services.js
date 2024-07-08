@@ -33,7 +33,7 @@ const Use = async ({ userId }) => {
             return { success: true }
         }
     } catch(e) {
-        return { success: false, message: 'Could not use a token.' }
+        return { success: false, message: e }
     }
 }
 
