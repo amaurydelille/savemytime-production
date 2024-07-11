@@ -36,7 +36,7 @@ const ProfilePage = () => {
                     >No plan yet
                     </p>
                 )
-            case 1:
+            case 'Classic':
                 return (
                     <div className="plan"
                         style={{
@@ -49,7 +49,7 @@ const ProfilePage = () => {
                         <p>3 keywords per search</p>
                     </div>
                 )
-            case 'Classic':
+            case 'Premium':
                 return (
                     <div className="plan"
                         style={{
