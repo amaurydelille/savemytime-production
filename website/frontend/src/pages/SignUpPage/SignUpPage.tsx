@@ -5,7 +5,6 @@ import './SignUpPage.css';
 import { SmileOutlined } from "@ant-design/icons";
 import axios from 'axios';
 import { signUpEndpoint } from "../../utils/uris.tsx"; 
-import Cookies from 'js-cookie';
 import { useAuth } from "../../contexts/UserAuthContext.tsx";
  
 const SignUpPage = () => {

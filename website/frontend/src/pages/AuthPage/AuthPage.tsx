@@ -29,8 +29,8 @@ const AuthPage = () => {
                 message.success(res.data.message);
                 const token = res.data.token;
                 const id = res.data.id;
-                Cookies.set('token', token)
-                Cookies.set('id', id);
+                // Cookies.set('token', token)
+                // Cookies.set('id', id);
                 await setToken(token);
                 await setId(id);
                 setRedirect(true);
