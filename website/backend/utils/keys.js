@@ -13,3 +13,4 @@ const generatePrivateKey = () => {
 const privateKey = generatePrivateKey();
 
 module.exports = privateKey;
+

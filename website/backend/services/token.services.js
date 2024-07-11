@@ -10,7 +10,6 @@ const planDict = {
 
 const Create = async ({ userId, amount }) => {
     try {
-        console.log(userId, amount)
         const db = await connectToDatabase();
         const latest_recharge_date = getFormattedDate();
         const plan = planDict[amount];
@@ -29,8 +28,6 @@ const Use = async ({ userId }) => {
         if (!tokensObject) {
             return { success: false, message: 'User not found.' };
         }
-
-        console.log(tokensObject);
         
         if (tokensObject.amount === 0) {
             return { success: false, message: 'You don\'t have enough tokens, please renew your plan.' };
