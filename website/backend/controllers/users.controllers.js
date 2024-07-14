@@ -25,7 +25,6 @@ const AuthUser = async (req, res) => {
         const result = await UserControllers.Auth(credentials);
         if (result.success) {
             const token = await createJSONWebToken(credentials.email, result.id);
-            console.log(token)
             res.status(200).json({ message: result.message, token: token, id: result.id });
         } else {
             res.status(401).json({ message: result.message });
