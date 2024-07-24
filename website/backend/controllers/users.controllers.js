@@ -25,12 +25,12 @@ const AuthUser = async (req, res) => {
         const result = await UserControllers.Auth(credentials);
         if (result.success) {
             const token = await createJSONWebToken(credentials.email, result.id);
-            res.status(200).json({ message: result.message, token: token, id: result.id });
+            res.status(200).json({ success: true, message: result.message, token: token, id: result.id });
         } else {
-            res.status(401).json({ message: result.message });
+            res.status(401).json({ success: false, message: result.message });
         }
     } catch (e) {
-        res.status(500).json({ message: `Could not authenticate account: ${e.message}` });
+        res.status(500).json({ success: false, message: `Could not authenticate account: ${e.message}` });
     }
 }
 
