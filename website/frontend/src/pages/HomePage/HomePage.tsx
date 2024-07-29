@@ -41,7 +41,7 @@ const HomePage = () => {
                 <div className="presentation-container">
                     <div className="text-container">
                         <p className='title'>SaveMyTime</p>
-                        <p className='text'>The most efficient, accurate, and reliable text summarizer<br />in a Google Chrome extension.</p>
+                        <p className='text'>The most efficient, accurate, and reliable webpage summarizer<br />in a Google Chrome extension.</p>
                         <a 
                             onClick={scrollToGifContainer}
                             className='button'
